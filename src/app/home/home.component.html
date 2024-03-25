@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="row mt-5">
+   <div class="col-md-4 mb-4 wrapper form-wrapper">
+    <form [formGroup]="mySectionForm" (submit)="createSection()">
+        <div class="form-group mb-3">
+            <h5 class="text-blod mt-2">Add Section</h5>
+          <label for="exampleFormControlInput1">Section Header</label>
+          <input type="text" formControlName="sectionHeader" class="form-control" id="exampleFormControlInput1">
+          <span class="small text-danger" *ngIf="(mySectionForm.get('sectionHeader').touched && !mySectionForm.get('sectionHeader').valid) || (submitted && !mySectionForm.get('sectionHeader').valid)">Section Header is Required !!</span>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Section Details</label>
+          <textarea formControlName="sectionDatails" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+           <span class="small text-danger" *ngIf="(mySectionForm.get('sectionDatails').touched && !mySectionForm.get('sectionDatails').valid) || (submitted && !mySectionForm.get('sectionDatails').valid)">Section Details is Required !!</span>
+        </div>
+        <button class="btn btn-primary btn-sm btn-block mb-4" [disabled]="!mySectionForm.valid" type="submit" >Add</button>
+      </form>
+   </div>
+   <div class="col-md-8">   
+<div class="card flex justify-content-center">
+  <p-accordion [activeIndex]="0">
+    <p-accordionTab  header=" Kolhapur ">
+        <p>
+          Kolhapur, an epitome of beauty and richness in the Indian state of Maharashtra, stands tall as one of the most significant cities in South Maharashtra. With its rich cultural heritage, this city has been a hub of historical, religious, and cultural activities for centuries. Its historic significance can be traced back to the 1st century BC and continues to amaze visitors with its intricate carvings and magnificent temples. Kolhapur is famous for its unique food culture, including its signature Kolhapuri cuisine, that tantalizes the taste buds of locals and tourists alike. 
+        </p>
+    </p-accordionTab>
+</p-accordion>
+<p-accordion [activeIndex]="0">
+  <p-accordionTab  header=" Chhatrapati Shivaji Maharaj ">
+      <p>
+        Shivaji I was an Indian ruler and a member of the Bhonsle Maratha clan. Shivaji carved out his own independent kingdom from the declining Adilshahi Sultanate of Bijapur that formed the genesis of the Maratha Empire. In 1674, he was formally crowned the Chhatrapati of his realm at Raigad Fort.
+      </p>
+  </p-accordionTab>
+</p-accordion>
+    <p-accordion [activeIndex]="0" *ngFor="let sec of AllSectionArr">
+        <p-accordionTab  header=" {{sec.sectionHeader}}">
+            <p>
+                {{sec.sectionDatails}}
+            </p>
+        </p-accordionTab>    
+    </p-accordion>
+</div>
+
+
+   </div>
+ </div>
+</div>
+
+
+
